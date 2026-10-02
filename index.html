@@ -3,6 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.jemartinezecom.com/">
+<meta property="og:title" content="Juan Martínez · E-commerce">
+<meta property="og:description" content="Clase gratuita: el sistema con el que creo y escalo marcas de e-commerce.">
+<meta property="og:image" content="https://www.jemartinezecom.com/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.jemartinezecom.com/img/og.jpg">
 <title>Juan Martínez E-commerce</title>
 <meta name="description" content="Landing de la mentoría de e-commerce de Juan Martínez. Estructura de ARZ Urus, estética de Nileri Maison. Borrador con espacios para VSL y testimonios en video.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -72,7 +81,7 @@ section{padding-block:96px}
 .hero .sub{font-size:clamp(16px,1.3vw,18px);max-width:48ch;color:var(--bone2)}
 .hero .ph.wide{width:100%;box-shadow:0 40px 90px rgba(0,0,0,.6)}
 .hero .btn{margin-top:6px}
-@media (max-width:860px){.hgrid{grid-template-columns:1fr;gap:34px;margin-top:36px}.htext{align-items:center;text-align:center}.htext .rule{margin-inline:auto!important}}
+@media (max-width:860px){.hgrid{grid-template-columns:1fr;gap:24px;margin-top:36px;justify-items:center;text-align:center}.htext{display:contents}.htext .rule{margin-inline:auto!important}.hero .ph.wide{order:2}.hero .btn{order:3;margin-top:0;width:100%}}
 
 /* ---- qué incluye la clase ---- */
 .incl{padding-block:0 96px}
@@ -207,6 +216,20 @@ footer .links a:hover{color:var(--bone)}
 footer .legal{margin:28px auto 0;max-width:72ch;font-size:12px;color:var(--taupe);line-height:1.6}
 footer .copy{margin-top:18px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--taupe)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ---- móvil: nada puede ser más ancho que la pantalla ---- */
+html,body{overflow-x:clip;max-width:100%}
+.hgrid>*,.feature .grid>*,.about .grid>*,.strip .wrap>*,.cgrid>*,.vids>*,.incl .three>*{min-width:0}
+@media (max-width:560px){
+  .marks{grid-template-columns:1fr}
+  .marks div{display:flex;align-items:baseline;gap:14px;padding:14px 16px}
+  .marks .n{font-size:28px;white-space:nowrap}
+  .marks .l{margin-top:0}
+  .brands{gap:8px 20px}
+  .form{padding:28px 20px}
+  .btn{padding:0 22px;letter-spacing:.2em;text-align:center}
+  .about .lead{font-size:20px}
+}
 </style>
 <style>img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
@@ -226,7 +249,6 @@ footer .copy{margin-top:18px;font-size:11px;letter-spacing:.2em;text-transform:u
         <h1>Cómo emprendedores que empezaron <em>desde cero</em> construyeron marcas de e-commerce que hoy facturan <em>6 y 7 cifras</em></h1>
         <p class="sub">Te muestro paso a paso el mismo sistema con el que vendí más de $5 millones de dólares con mis marcas el último año. En una clase gratuita.</p>
         <a class="btn" href="#aplicar">Quiero acceder a la clase gratuita <span class="arr">→</span></a>
-        <p class="micro">Sin costo. Solo para quien está dispuesto a construir una marca de verdad.</p>
       </div>
       <div class="ph wide" id="vsl">
         <div>
