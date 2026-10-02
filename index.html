@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Juan Martínez E-commerce</title>
+<meta name="description" content="Landing de la mentoría de e-commerce de Juan Martínez. Estructura de ARZ Urus, estética de Nileri Maison. Borrador con espacios para VSL y testimonios en video.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ---- Nileri Maison · tokens ---- */
+:root{
+  --ink:#141210;        /* cuero negro */
+  --ink2:#1d1a16;
+  --ink3:#2a2520;
+  --bone:#f3ede3;       /* Himalaya blanco */
+  --bone2:#e8dfd0;
+  --sand:#cdbfa8;
+  --taupe:#8a7a66;
+  --gold:#b2935f;       /* dorado del logo */
+  --gold2:#d8bf8d;
+  --line:rgba(178,147,95,.35);
+  --script:'Pinyon Script',cursive;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Jost','Helvetica Neue',Arial,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--bone);font:300 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;letter-spacing:.005em;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+img{max-width:100%;display:block}
+.wrap{width:min(1120px,100%);margin-inline:auto;padding-inline:20px}
+.k{font:500 11px/1 var(--sans);letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
+.k.dim{color:var(--taupe)}
+section{padding-block:96px}
+@media (max-width:700px){section{padding-block:64px}}
+
+/* ---- marca ---- */
+.brand{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+.brand .script{font:400 54px/1 var(--script);color:var(--bone)}
+.brand .maison{font:400 11px/1 var(--sans);letter-spacing:.5em;text-transform:uppercase;color:var(--gold);padding-left:.5em}
+.rule{width:64px;height:1px;background:var(--gold);margin-inline:auto;opacity:.8}
+
+/* ---- botón ---- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:60px;padding:0 38px;background:var(--bone);color:var(--ink);text-decoration:none;font:500 12px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;border:1px solid var(--bone);transition:background .2s,color .2s;cursor:pointer}
+.btn:hover{background:transparent;color:var(--bone)}
+.btn:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.btn .arr{font-family:var(--serif);font-size:20px;line-height:1}
+.center{display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center}
+.micro{font-size:12px;letter-spacing:.08em;color:var(--taupe)}
+
+/* ---- placeholders (a rellenar) ---- */
+.ph{position:relative;display:grid;place-items:center;background:var(--ink2);border:1px dashed var(--gold);color:var(--gold2);text-align:center;padding:20px}
+.ph .play{width:68px;height:68px;border-radius:50%;border:1px solid var(--gold);display:grid;place-items:center;margin-bottom:14px}
+.ph .play i{display:block;width:0;height:0;border-style:solid;border-width:10px 0 10px 17px;border-color:transparent transparent transparent var(--gold2);margin-left:4px}
+.ph .t{font:400 20px/1.2 var(--serif);color:var(--bone)}
+.ph .s{font:400 11px/1.5 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:8px}
+.ph.wide{aspect-ratio:16/9;width:min(880px,100%);margin-inline:auto}
+.ph.tall{aspect-ratio:9/16;width:min(380px,100%);margin-inline:auto}
+
+/* ---- hero ---- */
+.hero{position:relative;overflow:hidden;padding-block:40px 80px;isolation:isolate}
+.hero .bg{position:absolute;inset:0;z-index:-2;background:url(img/nileri-flatlay.jpg) center/cover no-repeat;opacity:.28;filter:saturate(.5)}
+.hero .veil{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(20,18,16,.6) 0%,rgba(20,18,16,.86) 60%,var(--ink) 100%)}
+.hero .brand .script{font-size:44px}
+.hgrid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;margin-top:48px}
+.htext{display:flex;flex-direction:column;align-items:flex-start;gap:22px}
+.hero h1{font-size:clamp(30px,3.4vw,44px);line-height:1.12;font-weight:300;text-wrap:pretty}
+.hero h1 em{font-style:italic;color:var(--gold2)}
+.hero .sub{font-size:clamp(16px,1.3vw,18px);max-width:48ch;color:var(--bone2)}
+.hero .ph.wide{width:100%;box-shadow:0 40px 90px rgba(0,0,0,.6)}
+.hero .btn{margin-top:6px}
+@media (max-width:860px){.hgrid{grid-template-columns:1fr;gap:34px;margin-top:36px}.htext{align-items:center;text-align:center}.htext .rule{margin-inline:auto!important}}
+
+/* ---- qué incluye la clase ---- */
+.incl{padding-block:0 96px}
+.incl .head{display:flex;flex-direction:column;gap:14px;align-items:center;text-align:center}
+.incl h2{font-size:clamp(28px,3.4vw,42px);font-weight:300}
+.incl h2 em{font-style:italic;color:var(--gold2)}
+.incl .three{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:44px}
+.incl .it{background:var(--ink);padding:34px 28px 38px;display:flex;flex-direction:column;gap:14px}
+.incl .it .n{font:400 40px/1 var(--serif);color:var(--gold2);font-style:italic}
+.incl .it h3{font-size:24px;line-height:1.2;font-weight:500}
+.incl .it p{font-size:15px;color:var(--sand)}
+@media (max-width:820px){.incl .three{grid-template-columns:1fr}.incl{padding-block:0 64px}}
+
+/* ---- caso destacado ---- */
+.feature{background:var(--bone);color:var(--ink)}
+.feature .k{color:var(--taupe)}
+.feature .grid{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:center;margin-top:48px}
+.feature .ph{background:var(--bone2);border-color:var(--taupe);color:var(--taupe)}
+.feature .ph .t{color:var(--ink)}
+.feature .ph .play{border-color:var(--taupe)}.feature .ph .play i{border-left-color:var(--taupe)}
+.feature h2{font-size:clamp(30px,3.6vw,46px);line-height:1.1;margin-top:14px}
+.feature .who{display:flex;align-items:center;gap:14px;margin-top:22px}
+.feature .who .av{width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--bone);display:grid;place-items:center;font-family:var(--serif);font-size:20px}
+.feature .who b{display:block;font-weight:500;letter-spacing:.02em}
+.feature .who span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--taupe)}
+.feature .body{margin-top:22px;color:#4a4036;max-width:50ch}
+.feature .body p+p{margin-top:12px}
+@media (max-width:820px){.feature .grid{grid-template-columns:1fr}}
+
+/* ---- testimonios ---- */
+.cases .head{display:flex;flex-direction:column;gap:16px;text-align:center;align-items:center}
+.cases h2{font-size:clamp(32px,4vw,52px);font-weight:300}
+.cases h2 em{font-style:italic;color:var(--gold2)}
+.cases .lead{max-width:56ch;color:var(--bone2)}
+.vids{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:56px}
+.vids .ph{aspect-ratio:9/13}
+.cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:22px}
+.case{background:var(--ink2);border:1px solid rgba(178,147,95,.18);display:flex;flex-direction:column}
+.case .shot{aspect-ratio:9/16;overflow:hidden;background:var(--ink3)}
+.case .shot img{width:100%;height:100%;object-fit:cover;object-position:center}
+.case .cap{padding:20px 22px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.case .cap .name{display:flex;align-items:center;gap:10px}
+.case .cap .av{width:26px;height:26px;border-radius:50%;border:1px solid var(--gold);color:var(--gold2);display:grid;place-items:center;font:400 13px var(--serif)}
+.case .cap .name b{font-weight:500;font-size:14px;letter-spacing:.04em}
+.case .cap .name span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--taupe)}
+.case .cap h3{font-size:22px;line-height:1.2;font-weight:500}
+.case .cap p{font-size:14px;color:var(--sand)}
+@media (max-width:900px){.vids,.cgrid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.vids,.cgrid{grid-template-columns:1fr}}
+.cases .cta{margin-top:64px}
+
+/* ---- quién está detrás ---- */
+.about{background:var(--bone);color:var(--ink)}
+.about .k{color:var(--taupe)}
+.about .grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:start;margin-top:48px}
+.about .photo{position:relative;background:var(--ink)}
+.about .photo img{width:100%;aspect-ratio:880/1080;object-fit:cover;object-position:center}
+.about .photo::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px var(--gold);pointer-events:none;margin:14px}
+.about .photo .tag{position:absolute;left:28px;bottom:28px;color:var(--bone)}
+.about .photo .tag .script{font:400 42px/1 var(--script)}
+.about .photo .tag .k{color:var(--gold2);display:block;margin-top:4px}
+.about h2{font-size:clamp(32px,4vw,50px);font-weight:300;line-height:1.1}
+.about h2 em{font-style:italic}
+.about .lead{font-family:var(--serif);font-size:22px;line-height:1.4;color:#3a3129;margin-top:22px;max-width:46ch}
+.about .text{margin-top:26px;color:#4a4036;max-width:58ch;display:flex;flex-direction:column;gap:14px}
+.about .text b{color:var(--ink);font-weight:500}
+.marks{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--sand);border:1px solid var(--sand);margin-top:32px}
+.marks div{background:var(--bone);padding:18px 16px}
+.marks .n{font:400 34px/1 var(--serif);color:var(--ink);font-variant-numeric:tabular-nums}
+.marks .l{font:400 11px/1.4 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--taupe);margin-top:8px}
+.quote{border-left:1px solid var(--gold);padding:6px 0 6px 22px;font-family:var(--serif);font-style:italic;font-size:21px;line-height:1.4;color:var(--ink);margin-top:30px}
+.quote small{display:block;font:500 11px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--taupe);margin-top:12px;font-style:normal}
+.brands{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:30px;align-items:baseline}
+.brands .k{color:var(--taupe)}
+.brands span{font-family:var(--serif);font-size:19px;color:var(--ink)}
+@media (max-width:820px){.about .grid{grid-template-columns:1fr}.about .photo{max-width:340px}.about .photo img{max-height:none}}
+
+/* ---- franja de marca ---- */
+.strip{padding:0;background:var(--ink)}
+.strip .wrap{display:grid;grid-template-columns:1fr 1fr;gap:0;padding:0}
+.strip img{width:100%;height:100%;object-fit:cover;object-position:center 40%;min-height:420px;opacity:1}
+.strip .txt{display:flex;flex-direction:column;justify-content:center;gap:16px;padding:48px 20px}
+.strip .txt .k{color:var(--gold)}
+.strip h3{font-size:clamp(26px,3vw,36px);font-weight:300;max-width:22ch}
+.strip h3 em{font-style:italic;color:var(--gold2)}
+.strip p{color:var(--sand);max-width:44ch}
+@media (max-width:820px){.strip .wrap{grid-template-columns:1fr}}
+
+/* ---- formulario ---- */
+.apply{background:var(--ink);position:relative;isolation:isolate;overflow:hidden}
+.apply::before{content:"";position:absolute;inset:0;z-index:-1;background:url(img/juan-jet.jpg) center 30%/cover no-repeat;opacity:.14;filter:saturate(.4)}
+.apply::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,var(--ink) 0%,rgba(20,18,16,.75) 40%,rgba(20,18,16,.9) 100%)}
+.apply .head{text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px}
+.apply h2{font-size:clamp(32px,4vw,52px);font-weight:300}
+.apply h2 em{font-style:italic;color:var(--gold2)}
+.apply .lead{max-width:50ch;color:var(--bone2)}
+.form{width:min(720px,100%);margin:48px auto 0;background:var(--ink2);border:1px solid var(--line);padding:40px 36px}
+.form .step{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
+.form .bar{height:1px;background:var(--ink3);margin-bottom:34px;position:relative}
+.form .bar i{position:absolute;left:0;top:0;height:1px;background:var(--gold);transition:width .3s}
+.form h3{font-size:clamp(24px,2.8vw,32px);font-weight:400;line-height:1.2}
+.form .hint{font-size:13px;color:var(--taupe);margin-top:8px;letter-spacing:.04em}
+.opts{display:flex;flex-direction:column;gap:10px;margin-top:28px}
+.opt{display:flex;align-items:center;gap:16px;padding:18px 20px;border:1px solid var(--ink3);background:var(--ink);cursor:pointer;transition:border-color .15s;font-size:16px}
+.opt:hover{border-color:var(--gold)}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt .l{width:28px;height:28px;border:1px solid var(--taupe);display:grid;place-items:center;font:400 12px var(--sans);color:var(--taupe);flex:none}
+.opt:has(input:checked){border-color:var(--gold)}
+.opt:has(input:checked) .l{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.field{margin-top:28px;display:flex;flex-direction:column;gap:10px}
+.field label{font:500 11px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--taupe)}
+.field input,.field textarea,.field select{width:100%;background:var(--ink);border:1px solid var(--ink3);color:var(--bone);font:300 17px var(--sans);padding:16px 18px;border-radius:0}
+.field textarea{min-height:120px;resize:vertical}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--gold)}
+.row2{display:grid;grid-template-columns:150px 1fr;gap:10px}
+@media (max-width:520px){.row2{grid-template-columns:1fr}}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:34px;flex-wrap:wrap}
+.ghost{background:none;border:0;color:var(--taupe);font:500 11px var(--sans);letter-spacing:.24em;text-transform:uppercase;cursor:pointer;padding:10px 0}
+.ghost:hover{color:var(--bone)}
+.err{color:#d9a28a;font-size:13px;margin-top:12px;min-height:1.2em}
+.done{text-align:center;display:none;flex-direction:column;gap:14px;align-items:center}
+.done .script{font:400 56px/1 var(--script);color:var(--bone)}
+.done p{color:var(--sand);max-width:40ch}
+.form.ok .pane{display:none}.form.ok .done{display:flex}
+.note{margin:22px auto 0;width:min(720px,100%);font-size:12px;color:var(--taupe);letter-spacing:.04em;text-align:center}
+
+/* ---- footer ---- */
+footer{border-top:1px solid var(--line);padding-block:56px 40px;text-align:center}
+footer .links{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 30px;margin-top:30px}
+footer .links a{font:400 11px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--taupe);text-decoration:none}
+footer .links a:hover{color:var(--bone)}
+footer .legal{margin:28px auto 0;max-width:72ch;font-size:12px;color:var(--taupe);line-height:1.6}
+footer .copy{margin-top:18px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--taupe)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<style>img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="bg"></div><div class="veil"></div>
+  <div class="wrap">
+    <div class="brand">
+      <span class="script">Juan Martínez</span>
+      <span class="maison">E-commerce</span>
+    </div>
+    <div class="hgrid">
+      <div class="htext">
+        <div class="rule" style="margin:0"></div>
+        <h1>Cómo emprendedores que empezaron <em>desde cero</em> construyeron marcas de e-commerce que hoy facturan <em>6 y 7 cifras</em></h1>
+        <p class="sub">Te muestro paso a paso el mismo sistema con el que vendí más de $5 millones de dólares con mis marcas el último año. En una clase gratuita.</p>
+        <a class="btn" href="#aplicar">Quiero acceder a la clase gratuita <span class="arr">→</span></a>
+        <p class="micro">Sin costo. Solo para quien está dispuesto a construir una marca de verdad.</p>
+      </div>
+      <div class="ph wide" id="vsl">
+        <div>
+          <div class="play" style="margin-inline:auto"><i></i></div>
+          <div class="t">VSL de Juan</div>
+          <div class="s">Pendiente · video de 3 a 6 min · aquí va el reproductor</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= QUÉ INCLUYE LA CLASE ================= -->
+<section class="incl">
+  <div class="wrap">
+    <div class="head">
+      <span class="k">La clase gratuita</span>
+      <h2>Tres cosas que te llevas <em>al terminar la clase</em></h2>
+    </div>
+    <div class="three">
+      <div class="it">
+        <span class="n">1</span>
+        <h3>El sistema exacto con el que creo marcas que venden más de $1 millón al año</h3>
+        <p>El paso a paso completo: de la idea del producto al cliente final. Negociación con el proveedor, branding, importación, estrategia creativa y pauta, en el orden en que yo lo hago.</p>
+      </div>
+      <div class="it">
+        <span class="n">2</span>
+        <h3>Mi lista de proveedores en China</h3>
+        <p>Las fábricas con las que produzco con marca propia, no revendedores. Con qué mínimos trabajan, cómo negociar la primera orden y cómo abrir un país nuevo con la misma fábrica.</p>
+      </div>
+      <div class="it">
+        <span class="n">3</span>
+        <h3>Los agentes de IA con los que opero mis marcas</h3>
+        <p>Los que uso para automatizar la operación y llevar la trazabilidad del negocio: pedidos, pauta, inventario y utilidad real por producto, sin depender de que yo esté encima.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CASO DESTACADO ================= -->
+<section class="feature">
+  <div class="wrap">
+    <span class="k">Caso destacado</span>
+    <div class="grid">
+      <div class="ph tall" id="caso-video">
+        <div>
+          <div class="play" style="margin-inline:auto"><i></i></div>
+          <div class="t">Video del caso</div>
+          <div class="s">Pendiente · entrevista al cliente · vertical</div>
+        </div>
+      </div>
+      <div>
+        <h2>De vender réplicas a una marca propia con registro Invima y FDA</h2>
+        <div class="who">
+          <div class="av">A</div>
+          <div><b>Arturo y Miguel</b><span>Clientes de Juan Martínez</span></div>
+        </div>
+        <div class="body">
+          <p>Ya tenían volumen de ventas cuando entraron. A ese nivel, los cambios pequeños hacen diferencias grandes: dejaron de vender réplicas, desarrollaron su propia marca con una fórmula mejorada, mejoraron el costo y el sistema logístico, y hoy son más rentables con la misma operación.</p>
+          <p>Se apalancaron de la financiación del programa, así que no invirtieron un solo dólar en inventario. <b>[Completar con las cifras que Juan autorice mostrar.]</b></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIOS ================= -->
+<section class="cases">
+  <div class="wrap">
+    <div class="head">
+      <span class="k">Resultados de clientes</span>
+      <h2>Marcas reales, con utilidad real y <em>que sostienen el tiempo</em></h2>
+      <p class="lead">No celebramos la primera venta. Celebramos marcas que importan, que tienen distribuidores, que recompran y que separan a sus dueños de la competencia.</p>
+    </div>
+
+    <!-- 3 videos pendientes -->
+    <div class="vids">
+      <div class="ph"><div><div class="play" style="margin-inline:auto"><i></i></div><div class="t">Testimonio en video 1</div><div class="s">Pendiente</div></div></div>
+      <div class="ph"><div><div class="play" style="margin-inline:auto"><i></i></div><div class="t">Testimonio en video 2</div><div class="s">Pendiente</div></div></div>
+      <div class="ph"><div><div class="play" style="margin-inline:auto"><i></i></div><div class="t">Testimonio en video 3</div><div class="s">Pendiente</div></div></div>
+    </div>
+
+    <!-- capturas reales de la destacada "Clientes" -->
+    <div class="cgrid">
+      <article class="case">
+        <div class="shot"><img src="img/caso-01.jpg" alt="Captura de la tienda de Emanuel: 6,5 millones de pesos dominicanos en ventas"></div>
+        <div class="cap"><div class="name"><span class="av">E</span><b>Emanuel</b><span>Suplementos · Rep. Dominicana</span></div>
+          <h3>$100.000 USD al mes en un mercado de 10 millones de habitantes</h3>
+          <p>Una marca de un suplemento con ticket promedio de $50. Ahora replica el proceso con varias marcas en distintos nichos.</p></div>
+      </article>
+      <article class="case">
+        <div class="shot"><img src="img/caso-12.jpg" alt="Panel de anuncios de Emanuel con ROAS de 11,71"></div>
+        <div class="cap"><div class="name"><span class="av">E</span><b>Emanuel</b><span>Pauta</span></div>
+          <h3>$5.000 en publicidad, retorno de 11: $55.000 vendidos</h3>
+          <p>Con mínimo un 20% de utilidad, son $11.000 USD para el bolsillo en un solo ciclo de pauta.</p></div>
+      </article>
+      <article class="case">
+        <div class="shot"><img src="img/caso-13.jpg" alt="Panel de ventas con COP 753,5 millones desde que comenzó el proyecto"></div>
+        <div class="cap"><div class="name"><span class="av">C</span><b>César</b><span>+100k USD al mes</span></div>
+          <h3>COP 753 millones desde que empezó el proyecto</h3>
+          <p>Con él ya son más de cinco clientes vendiendo más de 100.000 USD al mes dentro del programa. Siguiente paso: estrategia creativa sólida, bajar costos y duplicar con más productos.</p></div>
+      </article>
+      <article class="case">
+        <div class="shot"><img src="img/caso-03.jpg" alt="Mensajes de Sebastián con resultados de su marca de joyería"></div>
+        <div class="cap"><div class="name"><span class="av">S</span><b>Sebastián</b><span>Joyería · 40–50k USD/mes</span></div>
+          <h3>Subió al 10% su tasa de clientes que recompran</h3>
+          <p>Mejoró el ticket promedio en 3,5 USD. En 1.500 pedidos al mes son 5.250 USD extra de utilidad, cada mes.</p></div>
+      </article>
+      <article class="case">
+        <div class="shot"><img src="img/caso-02.jpg" alt="Producto noctape de Joan y panel de ventas"></div>
+        <div class="cap"><div class="name"><span class="av">J</span><b>Joan</b><span>Primera marca</span></div>
+          <h3>Vendió las 600 unidades de su primera importación</h3>
+          <p>15 millones de utilidad en la primera tanda. Siguiente paso: mejorar producto y oferta para vender por encima de $30.</p></div>
+      </article>
+      <article class="case">
+        <div class="shot"><img src="img/caso-06.jpg" alt="Suplementos para mascotas de Hilary y cajas de inventario"></div>
+        <div class="cap"><div class="name"><span class="av">H</span><b>Hilary</b><span>Suplipets</span></div>
+          <h3>22 millones en una semana y dos distribuidores asegurados</h3>
+          <p>Empezó vendiendo correas y accesorios. Migró a suplementación con una línea de más de 5 referencias y 15% de utilidad en Shopify.</p></div>
+      </article>
+      <article class="case">
+        <div class="shot"><img src="img/caso-04.jpg" alt="Paneles de ventas de Juan, importador de Cali, con 280 millones de pesos"></div>
+        <div class="cap"><div class="name"><span class="av">J</span><b>Juan</b><span>Importador · Cali</span></div>
+          <h3>280 millones en seis meses digitalizando su negocio</h3>
+          <p>Joyería, calzado y ropa. Este año viaja a China por primera vez para crear su propia marca.</p></div>
+      </article>
+      <article class="case">
+        <div class="shot"><img src="img/caso-10.webp" alt="Panel de Danilo García con 354 millones de pesos en ventas"></div>
+        <div class="cap"><div class="name"><span class="av">D</span><b>Danilo</b><span>Estructura y procesos</span></div>
+          <h3>COP 354 millones del 1 de febrero al 15 de marzo</h3>
+          <p>Mes y medio aplicando la estructura, el orden en los procesos y la estrategia que desarrollaron juntos.</p></div>
+      </article>
+      <article class="case">
+        <div class="shot"><img src="img/caso-08.jpg" alt="Producto brandeado de Juan y panel con 21 millones en ventas"></div>
+        <div class="cap"><div class="name"><span class="av">J</span><b>Juan</b><span>Producto brandeado</span></div>
+          <h3>Brandeó un producto y se separó por completo de la competencia</h3>
+          <p>Probó en Colombia, se hizo 5 millones y ahora se lanza a Estados Unidos.</p></div>
+      </article>
+      <article class="case">
+        <div class="shot"><img src="img/caso-11.jpg" alt="Camión con la primera importación de David y su panel de ventas"></div>
+        <div class="cap"><div class="name"><span class="av">D</span><b>David</b><span>Primera importación</span></div>
+          <h3>La mercancía no duró ni un mes</h3>
+          <p>Recuperó la inversión, le quedó utilidad y ya está averiguando bisutería para diversificar mientras llega la segunda importación.</p></div>
+      </article>
+      <article class="case">
+        <div class="shot"><img src="img/caso-05.jpg" alt="Testeo de Sebastián con 699 mil pesos en ventas en un día"></div>
+        <div class="cap"><div class="name"><span class="av">S</span><b>Sebastián</b><span>Nueva marca de suplementos</span></div>
+          <h3>Acompañado en toda la creación y producción</h3>
+          <p>Validó la nueva presentación y el nuevo precio en un testeo de un día. Próximo a lanzar.</p></div>
+      </article>
+      <article class="case">
+        <div class="shot"><img src="img/caso-09.jpg" alt="Notificaciones de primeras ventas de Miguel Ángel y Carlos Mauro"></div>
+        <div class="cap"><div class="name"><span class="av">M</span><b>Miguel Ángel y Carlos</b><span>Empezando</span></div>
+          <h3>Primera venta al día siguiente de montar las campañas</h3>
+          <p>También hay clientes que apenas empiezan. Con los procesos correctos y una buena guía no hace falta experiencia.</p></div>
+      </article>
+    </div>
+
+    <div class="center cta">
+      <a class="btn" href="#aplicar">Quiero acceder a la clase gratuita <span class="arr">↓</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= QUIÉN ESTÁ DETRÁS ================= -->
+<section class="about">
+  <div class="wrap">
+    <span class="k">Quién está detrás</span>
+    <div class="grid">
+      <div class="photo">
+        <img src="img/juan.jpg" alt="Juan Martínez en un yate en Dubái, con camisa azul, al atardecer">
+        <div class="tag"><span class="script">Juan Martínez</span><span class="k">Fundador · Prosox · Nileri Maison</span></div>
+      </div>
+      <div>
+        <h2>Nunca hice dropshipping. <em>Desde el primer negocio construí una marca.</em></h2>
+        <p class="lead">El año pasado vendí más de $5 millones de dólares con marcas de e-commerce en Latinoamérica. Hoy acompaño a emprendedores a crear la suya y escalarla.</p>
+        <div class="text">
+          <p>Antes de eso emigré. Hubo meses en los que comía una vez al día, dormía en un sofá rojo en un apartamento compartido y hacía domicilios en moto hasta las doce de la noche. Trabajé en un hotel limpiando pisos, piscina y elevadores, y en las horas que me sobraban me encerraba en un cuarto a estudiar e-commerce con el walkie-talkie en el pecho. Me despidieron por buscar un atajo. Esa noche entendí dos cosas que no he soltado desde entonces: <b>nadie va a venir a salvarte</b> y <b>los atajos no existen</b>.</p>
+          <p>Con esa base construí Prosox, Nileri Maison y otras tres marcas. En mi primer mes con Dropi quedamos de número 6 en el ranking global de Colombia, despachando más de 6.000 paquetes al mes. Tengo clientes que hoy venden más de un millón de dólares al año y con los que me siento a hablar de negocios en China.</p>
+          <p>Lo que enseño no es un truco de campañas. Es cómo se piensa, se ordena y se opera una empresa de e-commerce de verdad: procesos claros, una estrategia creativa con volumen, calidad y diversidad, branding aunque todavía no tengas marca, y mercados reales con un proceso de venta para cada uno.</p>
+        </div>
+        <div class="marks">
+          <div><div class="n">+$5M</div><div class="l">Vendidos el último año</div></div>
+          <div><div class="n">Top 6</div><div class="l">Ranking global Dropi · 1er mes</div></div>
+          <div><div class="n">+6.000</div><div class="l">Paquetes al mes</div></div>
+        </div>
+        <blockquote class="quote">“Hoy es una nueva oportunidad para cambiar la historia.”<small>Juan Martínez</small></blockquote>
+        <div class="brands"><span class="k">Marcas</span><span>Prosox</span><span>Nileri Maison</span><span>Taobio Labs</span><span>Exofoot</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FRANJA DE MARCA ================= -->
+<section class="strip">
+  <div class="wrap">
+    <img src="img/nileri-set.jpg" alt="Piezas de Nileri Maison en cocodrilo Himalaya frente a su caja negra: billetera, tarjetero y funda de teléfono">
+    <div class="txt">
+      <span class="k">Nileri Maison · la marca</span>
+      <h3>Esto es lo que significa <em>construir una marca</em> y no vender un producto</h3>
+      <p>Cuero genuino de cocodrilo del Himalaya, piezas únicas, pedidos privados. Una marca a la que nadie le puede bajar el precio cinco mil pesos para sacarla del mercado. Ese es el estándar con el que se trabaja en el programa.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FORMULARIO ================= -->
+<section class="apply" id="aplicar">
+  <div class="wrap">
+    <div class="head">
+      <span class="k">Aplica</span>
+      <h2>El siguiente caso de éxito <em>puede ser el tuyo</em></h2>
+      <p class="lead">Accede a la clase gratuita y descubre el sistema que están aplicando nuestros clientes.</p>
+    </div>
+
+    <form class="form" id="f" novalidate>
+      <div class="pane">
+        <div class="step"><span class="k dim" id="stepk">01 → 06</span><span class="k dim">Aplicación</span></div>
+        <div class="bar"><i id="bar" style="width:16.6%"></i></div>
+
+        <div class="q" data-q="1">
+          <h3>¿Cuándo estarías disponible para empezar?</h3>
+          <p class="hint">Si tu aplicación es aceptada.</p>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="momento" value="Ahora mismo" id="m1"><span class="l">A</span>Ahora mismo</label>
+            <label class="opt"><input type="radio" name="momento" value="Esta semana" id="m2"><span class="l">B</span>Esta semana</label>
+            <label class="opt"><input type="radio" name="momento" value="No lo sé" id="m3"><span class="l">C</span>No lo sé porque no sé tomar decisiones</label>
+          </div>
+        </div>
+
+        <div class="q" data-q="2" hidden>
+          <h3>¿Cómo te llamas?</h3>
+          <div class="field"><label for="nombre">Nombre y apellido</label><input id="nombre" name="nombre" type="text" autocomplete="name" placeholder="Tu nombre"></div>
+        </div>
+
+        <div class="q" data-q="3" hidden>
+          <h3>¿A qué correo te envío la clase?</h3>
+          <div class="field"><label for="email">Correo electrónico</label><input id="email" name="email" type="email" autocomplete="email" placeholder="nombre@correo.com"></div>
+        </div>
+
+        <div class="q" data-q="4" hidden>
+          <h3>¿En qué punto está tu negocio hoy?</h3>
+          <p class="hint">Elige la opción que más se parezca a tu situación.</p>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="situacion" value="Ya tengo marca o tienda vendiendo" id="s1"><span class="l">A</span>Ya tengo una marca o tienda vendiendo</label>
+            <label class="opt"><input type="radio" name="situacion" value="Hago dropshipping y quiero marca propia" id="s2"><span class="l">B</span>Hago dropshipping y quiero pasar a marca propia</label>
+            <label class="opt"><input type="radio" name="situacion" value="Importo o distribuyo y quiero digitalizar" id="s3"><span class="l">C</span>Importo o distribuyo y quiero digitalizar el negocio</label>
+            <label class="opt"><input type="radio" name="situacion" value="Estoy empezando desde cero" id="s4"><span class="l">D</span>Estoy empezando desde cero</label>
+          </div>
+        </div>
+
+        <div class="q" data-q="5" hidden>
+          <h3>¿Cuánto capital tienes disponible para invertir en tu marca?</h3>
+          <p class="hint">Inventario, pauta y acompañamiento. Sé honesto: esto define qué camino te recomendamos.</p>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="capital" value="+10.000" id="c1"><span class="l">A</span>Más de 10.000 US$</label>
+            <label class="opt"><input type="radio" name="capital" value="5.000-10.000" id="c2"><span class="l">B</span>Entre 5.000 y 10.000 US$</label>
+            <label class="opt"><input type="radio" name="capital" value="2.500-5.000" id="c3"><span class="l">C</span>Entre 2.500 y 5.000 US$</label>
+            <label class="opt"><input type="radio" name="capital" value="1.000-2.500" id="c4"><span class="l">D</span>Entre 1.000 y 2.500 US$</label>
+            <label class="opt"><input type="radio" name="capital" value="-1.000" id="c5"><span class="l">E</span>Menos de 1.000 US$</label>
+          </div>
+        </div>
+
+        <div class="q" data-q="6" hidden>
+          <h3>¿A qué número te escribimos?</h3>
+          <p class="hint">Te contactamos por WhatsApp para enviarte el acceso.</p>
+          <div class="field"><label for="tel">WhatsApp</label>
+            <div class="row2">
+              <select id="pais" name="pais">
+                <option value="+57">🇨🇴 +57</option><option value="+52">🇲🇽 +52</option><option value="+1">🇺🇸 +1</option><option value="+34">🇪🇸 +34</option><option value="+54">🇦🇷 +54</option><option value="+56">🇨🇱 +56</option><option value="+51">🇵🇪 +51</option><option value="+593">🇪🇨 +593</option><option value="+507">🇵🇦 +507</option><option value="+506">🇨🇷 +506</option><option value="+1809">🇩🇴 +1 809</option><option value="+971">🇦🇪 +971</option>
+              </select>
+              <input id="tel" name="tel" type="tel" autocomplete="tel-national" placeholder="300 000 0000">
+            </div>
+          </div>
+        </div>
+
+        <div class="err" id="err"></div>
+        <div class="nav">
+          <button type="button" class="ghost" id="back">← Atrás</button>
+          <button type="button" class="btn" id="next">Continuar <span class="arr">→</span></button>
+        </div>
+      </div>
+
+      <div class="done">
+        <span class="script">Gracias</span>
+        <div class="rule"></div>
+        <p>Recibimos tu aplicación. En las próximas horas te escribimos por WhatsApp con el acceso a la clase.</p>
+        <p class="micro">[Pendiente: redirigir a la página de gracias con el video de Juan y el enlace al grupo de WhatsApp.]</p>
+      </div>
+    </form>
+    <p class="note">[Pendiente de conectar: webhook de GoHighLevel y píxel de Meta (evento Lead solo si califica; SubmitApplication si el capital es 2.500 US$ o más).]</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><span class="script">Juan Martínez</span><span class="maison">E-commerce</span></div>
+    <div class="links">
+      <a href="#">Política de privacidad</a><a href="#">Términos de uso</a><a href="#">Condiciones de acceso</a><a href="https://www.instagram.com/je_martinezg_/" target="_blank" rel="noopener">Instagram</a><a href="https://www.youtube.com/@Jemartinezg" target="_blank" rel="noopener">YouTube</a>
+    </div>
+    <p class="legal">Este sitio no forma parte de Facebook ni de Meta Platforms, Inc. Los resultados mostrados son reales, de clientes concretos, y no garantizan que obtengas los mismos; dependen de tu esfuerzo, tu dedicación, tu capital y tu mercado. Nada en esta página es una promesa de ingresos.</p>
+    <p class="copy">© 2026 Juan Martínez</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var f=document.getElementById('f'),qs=[].slice.call(f.querySelectorAll('.q')),i=0,
+      bar=document.getElementById('bar'),stepk=document.getElementById('stepk'),err=document.getElementById('err'),
+      back=document.getElementById('back'),next=document.getElementById('next');
+  function show(){
+    qs.forEach(function(q,k){q.hidden=k!==i});
+    bar.style.width=((i+1)/qs.length*100)+'%';
+    stepk.textContent='0'+(i+1)+' → 0'+qs.length;
+    back.style.visibility=i?'visible':'hidden';
+    next.innerHTML=(i===qs.length-1?'Enviar aplicación':'Continuar')+' <span class="arr">→</span>';
+    err.textContent='';
+    var first=qs[i].querySelector('input:not([type=radio]),select');if(first)first.focus({preventScroll:true});
+  }
+  function valid(){
+    var q=qs[i],r=q.querySelector('input[type=radio]');
+    if(r){ if(!q.querySelector('input:checked')){err.textContent='Elige una opción para continuar.';return false} return true }
+    var inp=q.querySelector('input');
+    var v=inp.value.trim();
+    if(!v){err.textContent='Completa este campo para continuar.';return false}
+    if(inp.type==='email'&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){err.textContent='Revisa el correo: parece incompleto.';return false}
+    if(inp.type==='tel'&&v.replace(/\D/g,'').length<7){err.textContent='Escribe un número de WhatsApp válido.';return false}
+    return true;
+  }
+  next.addEventListener('click',function(){
+    if(!valid())return;
+    if(i<qs.length-1){i++;show();return}
+    var data={};[].forEach.call(f.elements,function(el){if(el.name)data[el.name]=el.type==='radio'?(el.checked?el.value:data[el.name]):el.value});
+    // Aquí va el POST al webhook de GHL y el evento del píxel. Por ahora solo confirma en pantalla.
+    f.classList.add('ok');
+    f.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  back.addEventListener('click',function(){if(i>0){i--;show()}});
+  f.addEventListener('submit',function(e){e.preventDefault();next.click()});
+  f.addEventListener('change',function(e){ if(e.target.type==='radio'&&i<qs.length-1) setTimeout(function(){i++;show()},220) });
+  f.addEventListener('keydown',function(e){if(e.key==='Enter'&&e.target.tagName!=='TEXTAREA'){e.preventDefault();next.click()}});
+  show();
+})();
+</script>
+
+</body>
+</html>
